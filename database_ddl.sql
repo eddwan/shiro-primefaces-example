@@ -157,38 +157,6 @@ ALTER TABLE ONLY role ALTER COLUMN id SET DEFAULT nextval('role_id_seq'::regclas
 
 
 --
--- Data for Name: person; Type: TABLE DATA; Schema: public; Owner: shiro_primefaces
--- Default password: 111
---
-
-COPY person (id, name, email, login, password) FROM stdin;
-1	Example User	user@example.org	user	$shiro1$SHA-256$500000$E26t9FVZJzhQi9kCS/yX+A==$cUBvP9rl8qb0NpyVZZizS9Q9A7Hoqaqu1vZ0pqdy2xk=
-2	Example Admin	admin@example.org	admin	$shiro1$SHA-256$500000$E26t9FVZJzhQi9kCS/yX+A==$cUBvP9rl8qb0NpyVZZizS9Q9A7Hoqaqu1vZ0pqdy2xk=
-\.
-
-
---
--- Data for Name: person_role; Type: TABLE DATA; Schema: public; Owner: shiro_primefaces
---
-
-COPY person_role (id, id_person, id_role) FROM stdin;
-1	1	2
-2	2	1
-3	2	2
-\.
-
-
---
--- Data for Name: role; Type: TABLE DATA; Schema: public; Owner: shiro_primefaces
---
-
-COPY role (id, name) FROM stdin;
-1	admin
-2	user
-\.
-
-
---
 -- Name: person_email_key; Type: CONSTRAINT; Schema: public; Owner: shiro_primefaces; Tablespace: 
 --
 
@@ -250,3 +218,12 @@ ALTER TABLE ONLY person_role
 
 ALTER TABLE ONLY person_role
     ADD CONSTRAINT person_role_id_role_fkey FOREIGN KEY (id_role) REFERENCES role(id);
+
+--
+-- INSERT DEMO VALUES TO THE DATABASE
+-- DEFAULT PASSWORD 111
+--
+
+INSERT INTO role(id, name) VALUES (1, 'admin'),(2,'user');
+INSERT INTO person (id, name, email, login, password) VALUES (1, 'Example User', 'user@example.org', 'user', '$shiro1$SHA-256$500000$E26t9FVZJzhQi9kCS/yX+A==$cUBvP9rl8qb0NpyVZZizS9Q9A7Hoqaqu1vZ0pqdy2xk='), (2, 'Example Admin', 'admin@example.org', 'admin', '$shiro1$SHA-256$500000$E26t9FVZJzhQi9kCS/yX+A==$cUBvP9rl8qb0NpyVZZizS9Q9A7Hoqaqu1vZ0pqdy2xk=');
+INSERT INTO person_role(id, id_person, id_role) VALUES (1,1,2),(2,2,1),(3,2,2);

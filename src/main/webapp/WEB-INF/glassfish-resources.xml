@@ -11,8 +11,8 @@
         <property name="serverName" value="localhost"/>
         <property name="PortNumber" value="5432"/>
         <property name="DatabaseName" value="shiro_primefaces"/>
-        <property name="User" value="shiro_primefaces"/>
-        <property name="Password" value="testpass"/>
+        <property name="User" value="postgres"/>
+        <property name="Password" value="4xpert123"/>
     </jdbc-connection-pool>
     <jdbc-resource pool-name="pool/shiro-primefaces" jndi-name="java:app/jdbc/shiro-primefaces"/>
 </resources>
